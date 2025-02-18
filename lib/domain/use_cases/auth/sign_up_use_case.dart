@@ -22,7 +22,9 @@ class SignUpUseCase {
       name: name,
       birhtday: birhtday,
     );
-    if (user.isRight) {}
+    if (user.isRight) {
+      userState.user = user.right;
+    }
     return user;
   }
 }

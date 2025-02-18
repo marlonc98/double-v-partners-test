@@ -4,7 +4,6 @@ import 'package:doublevpartners/domain/use_cases/auth/sign_in_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/sign_in_with_finger_print_use_case.dart';
 import 'package:doublevpartners/presentation/provider/language/key_word_localization.dart';
 import 'package:doublevpartners/presentation/routes/view_model.dart';
-import 'package:doublevpartners/presentation/ui/pages/home/home_page.dart';
 import 'package:doublevpartners/presentation/ui/pages/maps/search/map_locations_search_page.dart';
 import 'package:doublevpartners/presentation/ui/widgets/modals/show_modal.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +107,7 @@ class LoginPageViewModel extends ViewModel<LoginPage> {
         Navigator.pushNamedAndRemoveUntil(
           // ignore: use_build_context_synchronously
           context,
-          HomePage.route,
+          MapLocationsSearchPage.route,
           (route) => false,
         );
       }
