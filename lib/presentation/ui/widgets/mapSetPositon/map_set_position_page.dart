@@ -1,4 +1,4 @@
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 import 'package:doublevpartners/presentation/provider/language/key_word_localization.dart';
 import 'package:doublevpartners/presentation/ui/widgets/buttons/button_widget.dart';
 import 'package:doublevpartners/presentation/ui/widgets/form/list_item.dart';

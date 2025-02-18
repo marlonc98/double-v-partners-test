@@ -1,5 +1,6 @@
 import 'package:doublevpartners/domain/entities/user/user_entity.dart';
 import 'package:doublevpartners/presentation/ui/pages/auth/login/login_page.dart';
+import 'package:doublevpartners/presentation/ui/pages/maps/search/map_locations_search_page.dart';
 import 'package:doublevpartners/presentation/ui/pages/splash/splash_page.dart';
 import 'package:doublevpartners/presentation/ui/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginPage());
       case SignUpPage.route:
         return MaterialPageRoute(builder: (_) => SignUpPage());
-
+      case MapLocationsSearchPage.route:
+        return MaterialPageRoute(builder: (_) => MapLocationsSearchPage());
       case HomePage.route:
         return MaterialPageRoute(builder: (_) => HomePage());
       default:

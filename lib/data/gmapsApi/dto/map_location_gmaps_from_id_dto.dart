@@ -1,4 +1,4 @@
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 
 class MapLocationGmapsFromIdDto {
   static MapLocationEntity fromJson(Map<String, dynamic> json) {

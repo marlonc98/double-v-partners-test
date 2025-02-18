@@ -1,6 +1,11 @@
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 import 'package:doublevpartners/domain/repositories/maps_repository.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:doublevpartners/data/repositories/maps/api/save_location_api_impl.dart';
+import 'package:doublevpartners/data/repositories/maps/api/search_user_locations_api_impl.dart';
+import 'package:doublevpartners/domain/entities/exception_entity.dart';
+import 'package:doublevpartners/domain/entities/search_result_entity.dart';
+import 'package:either_dart/either.dart';
 
 MapLocationEntity mapLocationEntity = MapLocationEntity(
   address: "Calle 1",
@@ -46,4 +51,28 @@ class MapsRepositoryFake extends MapsRepository {
       altitudeAccuracy: 0,
     ),
   );
+
+  @override
+  Future<Either<ExceptionEntity, void>> saveLocation(
+    MapLocationEntity location,
+    String userId,
+  ) async {
+    return await saveLocationApiImpl(location: location, userId: userId);
+  }
+
+  @override
+  Future<Either<ExceptionEntity, SearchResultEntity<MapLocationEntity>>>
+  searchUserLocations({
+    required int page,
+    required String query,
+    required int itemsPerPage,
+    required String userId,
+  }) async {
+    return await searchUserLocationsApiImpl(
+      page: page,
+      query: query,
+      itemsPerPage: itemsPerPage,
+      userId: userId,
+    );
+  }
 }

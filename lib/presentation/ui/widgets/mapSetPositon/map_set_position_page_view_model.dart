@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 import 'package:doublevpartners/domain/use_cases/maps/get_current_position_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/maps/get_location_by_id_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/maps/get_location_by_key_word_use_case.dart';

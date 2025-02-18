@@ -1,4 +1,4 @@
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 import 'package:doublevpartners/domain/repositories/maps_repository.dart';
 
 class GetLocationByLatLngUseCase {

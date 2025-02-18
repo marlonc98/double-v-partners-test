@@ -2,9 +2,12 @@ import 'package:doublevpartners/data/repositories/auth/auth_repository_dev.dart'
 import 'package:doublevpartners/data/repositories/auth/auth_repository_fake.dart';
 import 'package:doublevpartners/data/repositories/auth/auth_repository_impl.dart';
 import 'package:doublevpartners/data/repositories/localization/localization_repository_impl.dart';
+import 'package:doublevpartners/domain/use_cases/maps/save_location_use_case.dart';
+import 'package:doublevpartners/presentation/ui/widgets/maps_repository_impl.dart';
 import 'package:doublevpartners/data/repositories/theme/theme_repository_impl.dart';
 import 'package:doublevpartners/domain/repositories/auth_repository.dart';
 import 'package:doublevpartners/domain/repositories/localization_repository.dart';
+import 'package:doublevpartners/domain/repositories/maps_repository.dart';
 import 'package:doublevpartners/domain/repositories/theme_repository.dart';
 import 'package:doublevpartners/domain/states/localization/localization_state.dart';
 import 'package:doublevpartners/domain/states/theme/theme_state.dart';
@@ -12,6 +15,7 @@ import 'package:doublevpartners/domain/states/user/user_state.dart';
 import 'package:doublevpartners/domain/use_cases/auth/get_current_user_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/get_saved_email_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/sign_in_use_case.dart';
+import 'package:doublevpartners/domain/use_cases/auth/sign_in_with_finger_print_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/sign_out_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/sign_up_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/auth/verify_finger_print_use_case.dart';
@@ -22,6 +26,7 @@ import 'package:doublevpartners/presentation/provider/language/localization_stat
 import 'package:doublevpartners/presentation/provider/theme/theme_provider_impl.dart';
 import 'package:doublevpartners/presentation/provider/user/user_state_impl.dart';
 import 'package:get_it/get_it.dart';
+import 'package:doublevpartners/domain/use_cases/maps/search_user_locations_use_case.dart';
 
 class DependencyInjection {
   DependencyInjection() {
@@ -45,6 +50,7 @@ class DependencyInjection {
     getIt.registerSingleton<LocalizationRepository>(
       LocalizationRepositoryImpl(),
     );
+    getIt.registerSingleton<MapsRepository>(MapsRepositoryImpl());
     getIt.registerSingleton<ThemeRepository>(ThemeRepositoryImpl());
     // }
     //#endregion repositories
@@ -87,6 +93,12 @@ class DependencyInjection {
     getIt.registerSingleton<VerifyFingerPrintUseCase>(
       VerifyFingerPrintUseCase(authRepository: getIt.get<AuthRepository>()),
     );
+    getIt.registerSingleton<SignInWithFingerPrintUseCase>(
+      SignInWithFingerPrintUseCase(
+        authRepository: getIt.get<AuthRepository>(),
+        userState: getIt.get<UserState>(),
+      ),
+    );
     //#endregion
 
     //#region ---------------- default -------------------------//
@@ -105,6 +117,21 @@ class DependencyInjection {
       ChangeLanguageUseCase(
         localizationState: getIt.get<LocalizationState>(),
         localizationRepository: getIt.get<LocalizationRepository>(),
+      ),
+    );
+
+    //#endregion
+    //#region ---------------- maps -------------------------//
+    getIt.registerSingleton<SearchUserLocationsUseCase>(
+      SearchUserLocationsUseCase(
+        mapsRepository: getIt.get<MapsRepository>(),
+        userState: getIt.get<UserState>(),
+      ),
+    );
+    getIt.registerSingleton<SaveLocationUseCase>(
+      SaveLocationUseCase(
+        mapsRepository: getIt.get<MapsRepository>(),
+        userState: getIt.get<UserState>(),
       ),
     );
     //#endregion

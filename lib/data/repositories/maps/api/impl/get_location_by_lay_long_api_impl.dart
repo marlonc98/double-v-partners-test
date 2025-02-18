@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:doublevpartners/data/gmapsApi/gmaps_api.dart';
 import 'package:doublevpartners/data/repositories/maps/api/impl/get_locations_form_maps_api_impl.dart';
-import 'package:doublevpartners/domain/entities/map_location_entity.dart';
+import 'package:doublevpartners/domain/entities/map_location/map_location_entity.dart';
 
 Future<MapLocationEntity?> getLocationByLatLongApiImpl(
   double lat,

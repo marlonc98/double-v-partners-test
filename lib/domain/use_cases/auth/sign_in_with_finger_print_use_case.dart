@@ -6,20 +6,20 @@ import '../../repositories/auth_repository.dart';
 
 class SignInWithFingerPrintUseCase {
   final AuthRepository authRepository;
-  final UserState userProvider;
+  final UserState userState;
 
   SignInWithFingerPrintUseCase({
     required this.authRepository,
-    required this.userProvider,
+    required this.userState,
   });
 
   Future<Either<ExceptionEntity, UserEntity>> call() async {
     Either<ExceptionEntity, UserEntity> response =
         await authRepository.signInWithSavedCredentials();
     if (response.isRight) {
-      userProvider.user = response.right;
+      userState.user = response.right;
     } else {
-      userProvider.user = null;
+      userState.user = null;
     }
     return response;
   }

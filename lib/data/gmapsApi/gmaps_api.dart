@@ -38,9 +38,7 @@ class GmapsApi extends RestApi {
 
   String completeRelativeUrl() {
     String key;
-    if (kIsWeb) {
-      key = webGmapsApiKey;
-    } else if (Platform.isIOS) {
+    if (Platform.isIOS) {
       key = iosGmapsApiKey;
     } else {
       key = androidGmapsApiKey;
