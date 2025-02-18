@@ -7,6 +7,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   cardTheme: CardTheme(elevation: 0.4),
   floatingActionButtonTheme: FloatingActionButtonThemeData().copyWith(
     backgroundColor: COLOR_MAIN,
+    foregroundColor: Colors.white,
   ),
   checkboxTheme: CheckboxThemeData().copyWith(
     fillColor: WidgetStateProperty.resolveWith((states) {

@@ -1,4 +1,5 @@
 import 'package:doublevpartners/data/repositories/maps/searcher_app_bar.dart';
+import 'package:doublevpartners/presentation/ui/widgets/custom_bottom_navigation.dart';
 import 'package:doublevpartners/presentation/ui/widgets/errorPaginator/error_paginator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -73,6 +74,10 @@ class _MapLocationsSearchPageState extends State<MapLocationsSearchPage> {
                   ),
                 ),
               ],
+            ),
+            bottomNavigationBar: CustomBottomNavigation(
+              context: context,
+              currentRoute: MapLocationsSearchPage.route,
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: viewModel.addLocation,
