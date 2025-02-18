@@ -6,6 +6,7 @@ Este proyecto es una prueba técnica para el proceso de ingreso a la empresa **D
 
 ## La Api Key de google no es visible
 Por temas de seguridad y costos comparto el proyecto sin api key, el ejectuable se encuentra totalmente funcional, pero para que puedan correr el codigo y ver la app funcionando deben ingresar su ApiKey de Google Maps en "private_constants.dart", "AndroidManifest" y "AppDelegate"
+Se recomienda usar la app en un dispositivo fisico ya que esta tiene uso de Biometricos y de  ubicación
 
 ## Arquitectura
 
@@ -31,6 +32,7 @@ El proyecto está diseñado para seguir una arquitectura limpia por capas, utili
 
 - **Soporte Multilenguaje:**  
   La aplicación cuenta con una arquitectura preparada para soportar múltiples idiomas. Se utiliza la librería **shared_preferences** para almacenar la configuración de idioma seleccionada por el usuario. Esto permite recordar la preferencia entre sesiones y facilita la implementación de otros idiomas en el futuro sin necesidad de reconfigurar cada vez.  
+
 
 ---
 
@@ -65,15 +67,18 @@ El proyecto utiliza las siguientes librerías externas para facilitar el desarro
 9. **[json_serializable: ^6.0.1](https://pub.dev/packages/json_serializable)**  
    Se utiliza junto con `freezed_annotation` para generar automáticamente el código necesario para la serialización y deserialización de JSON.
 
-10. **[carousel_slider: ^4.0.0](https://pub.dev/packages/carousel_slider)**  
-    Se utiliza para crear carruseles de imágenes y otros widgets. Proporciona una forma fácil de implementar carruseles con soporte para puntos indicadores y otras características.
+10. **[flutter_secure_storage: ^5.0.2](https://pub.dev/packages/flutter_secure_storage)**  
+    Se utiliza para almacenar datos de manera segura y encriptada, como las ubicaciones y los usuarios.
+
+11. **[local_auth: ^2.1.3](https://pub.dev/packages/local_auth)**  
+    Se utiliza para proporcionar autenticación rápida mediante huella dactilar.
 
 ---
 
 ## Descargar la Aplicación
 
 Si deseas probar la aplicación en Android, puedes descargar el archivo APK desde:  
-`/app-prod-release.apk`
+`/app-prod-debug.apk`
 
 ---
 

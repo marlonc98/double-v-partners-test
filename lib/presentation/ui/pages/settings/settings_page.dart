@@ -1,7 +1,10 @@
 import 'package:doublevpartners/domain/states/user/user_state.dart';
+import 'package:doublevpartners/domain/use_cases/auth/sign_out_use_case.dart';
+import 'package:doublevpartners/presentation/ui/pages/auth/login/login_page.dart';
 import 'package:doublevpartners/presentation/ui/widgets/custom_bottom_navigation.dart';
 import 'package:doublevpartners/utils/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -85,8 +88,13 @@ class SettingsPage extends StatelessWidget {
             Spacer(),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // Implement logout logic here
+                onPressed: () async {
+                  GetIt.I.get<SignOutUseCase>().call();
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    LoginPage.route,
+                    (route) => false,
+                  );
                 },
                 child: Text('Logout', style: TextStyle(fontSize: 14)),
               ),

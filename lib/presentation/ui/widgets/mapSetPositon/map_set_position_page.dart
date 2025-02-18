@@ -84,12 +84,13 @@ class MapSetPositionPage extends StatelessWidget {
                             SizedBox(height: 8),
                             Text(viewModel.pickedMapLocation!.address),
                             SizedBox(height: 8),
-                            ButtonWidget(
-                              onTap: viewModel.save,
-                              text: viewModel.localization.translate(
-                                KeyWordsLocalization.Save,
+                            if (initialPosition == null)
+                              ButtonWidget(
+                                onTap: viewModel.save,
+                                text: viewModel.localization.translate(
+                                  KeyWordsLocalization.Save,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),
