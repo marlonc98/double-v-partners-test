@@ -97,6 +97,9 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       return Colors.white;
     }),
   ),
+  listTileTheme: ThemeData.dark().listTileTheme.copyWith(
+    textColor: Colors.white,
+  ),
   appBarTheme: AppBarTheme().copyWith(
     backgroundColor: Colors.grey[800],
     elevation: 0,

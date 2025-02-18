@@ -9,12 +9,13 @@ class SearcherAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final bool waitSearch;
 
-  const SearcherAppBar(
-      {super.key,
-      required this.title,
-      this.defaultSearch,
-      required this.onSearch,
-      this.waitSearch = false});
+  const SearcherAppBar({
+    super.key,
+    required this.title,
+    this.defaultSearch,
+    required this.onSearch,
+    this.waitSearch = false,
+  });
 
   @override
   SearcherAppBarState createState() => SearcherAppBarState();
@@ -58,41 +59,45 @@ class SearcherAppBarState extends State<SearcherAppBar> {
   @override
   SliverAppBar build(BuildContext context) {
     return SliverAppBar(
-        floating: true,
-        snap: true,
-        title: searching
-            ? Row(
+      floating: true,
+      snap: true,
+      title:
+          searching
+              ? Row(
                 children: [
                   Expanded(
-                      child: CupertinoSearchTextField(
-                    padding: const EdgeInsets.all(12),
-                    controller: _textController,
-                    onChanged: _onKeyDownSearch,
-                    onSubmitted: widget.onSearch,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    child: CupertinoSearchTextField(
+                      padding: const EdgeInsets.all(12),
+                      controller: _textController,
+                      onChanged: _onKeyDownSearch,
+                      onSubmitted: widget.onSearch,
+                      style: const TextStyle(color: Colors.white),
                     ),
-                  )),
+                  ),
                   IconButton(
-                      onPressed: () => toogleSearch(false),
-                      icon: const Icon(Icons.close))
+                    onPressed: () => toogleSearch(false),
+                    icon: const Icon(Icons.close),
+                  ),
                 ],
               )
-            : Row(
+              : Row(
                 children: [
-                  const SizedBox(
-                    width: 16,
-                  ),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: Text(
                       widget.title,
+                      style: TextStyle(
+                        color: Theme.of(context).textTheme.bodyMedium?.color,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   IconButton(
-                      onPressed: () => toogleSearch(true),
-                      icon: const Icon(Icons.search))
+                    onPressed: () => toogleSearch(true),
+                    icon: const Icon(Icons.search),
+                  ),
                 ],
-              ));
+              ),
+    );
   }
 }

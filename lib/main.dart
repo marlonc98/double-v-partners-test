@@ -1,5 +1,6 @@
 import 'package:doublevpartners/dependency_injection.dart';
 import 'package:doublevpartners/domain/states/theme/theme_state.dart';
+import 'package:doublevpartners/presentation/provider/theme/themes.dart';
 import 'package:doublevpartners/presentation/routes/route_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -38,6 +39,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       onGenerateRoute: RouteGenerator.generateRoute,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       themeMode: Provider.of<ThemeState>(context).themeMode,
     );
   }

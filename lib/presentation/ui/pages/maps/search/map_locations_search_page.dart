@@ -35,6 +35,7 @@ class _MapLocationsSearchPageState extends State<MapLocationsSearchPage> {
                   onSearch: viewModel.handleSearch,
                   waitSearch: true,
                 ),
+                SliverPadding(padding: EdgeInsets.all(8)),
                 PagedSliverList<int, MapLocationEntity>(
                   pagingController: viewModel.pagingController,
                   builderDelegate: PagedChildBuilderDelegate<MapLocationEntity>(
@@ -57,7 +58,7 @@ class _MapLocationsSearchPageState extends State<MapLocationsSearchPage> {
                           ),
                         ),
                     itemBuilder:
-                        (context, item, index) => Container(
+                        (context, item, index) => Card(
                           margin: const EdgeInsets.only(
                             bottom: 8,
                             left: 16,

@@ -21,9 +21,13 @@ searchUserLocationsApiImpl({
             .map((location) => MapLocationEntity.fromJson(jsonDecode(location)))
             .toList();
 
+    print("user locations founddd $query $allLocations");
     List<MapLocationEntity> filteredLocations =
         allLocations
-            .where((location) => location.name.contains(query))
+            .where(
+              (location) =>
+                  location.name.toLowerCase().contains(query.toLowerCase()),
+            )
             .toList();
 
     int totalItems = filteredLocations.length;

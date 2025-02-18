@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:doublevpartners/utils/images_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ImageNetworkWithLoadWidget extends StatelessWidget {
   final String imageUrl;
@@ -48,11 +46,13 @@ class ImageNetworkWithLoadWidget extends StatelessWidget {
             width: width ?? double.infinity,
           );
         }
-        return SvgPicture.asset(
-          ImagesConstants.imageNotFound,
-          height: height ?? 250,
-          fit: fit,
-          width: width ?? double.infinity,
+        return SizedBox(
+          height: height,
+          width: width,
+          child: Container(
+            color: Colors.grey[200],
+            child: const Center(child: Icon(Icons.error)),
+          ),
         );
       },
       loadingBuilder: (context, child, loadingProgress) {

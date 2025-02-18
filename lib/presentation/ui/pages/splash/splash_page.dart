@@ -1,16 +1,10 @@
 import 'package:doublevpartners/constants.dart';
-import 'package:doublevpartners/domain/entities/user/user_entity.dart';
-import 'package:doublevpartners/domain/repositories/auth_repository.dart';
 import 'package:doublevpartners/domain/states/localization/localization_state.dart';
-import 'package:doublevpartners/domain/use_cases/auth/get_current_user_use_case.dart';
-import 'package:doublevpartners/domain/use_cases/auth/verify_finger_print_use_case.dart';
 import 'package:doublevpartners/presentation/provider/language/key_word_localization.dart';
 import 'package:doublevpartners/presentation/ui/pages/auth/login/login_page.dart';
-import 'package:doublevpartners/presentation/ui/pages/home/home_page.dart';
 import 'package:doublevpartners/presentation/ui/widgets/image_network_with_load_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get_it/get_it.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +32,7 @@ class _SplashPageState extends State<SplashPage>
     await Future.delayed(Duration(milliseconds: 300));
     if (mounted) {
       Navigator.of(
+        // ignore: use_build_context_synchronously
         context,
       ).pushNamedAndRemoveUntil(LoginPage.route, (route) => false);
     }
@@ -47,8 +42,10 @@ class _SplashPageState extends State<SplashPage>
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    initApp();
-    loadVersionAndBuildNumber();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      initApp();
+      loadVersionAndBuildNumber();
+    });
   }
 
   @override

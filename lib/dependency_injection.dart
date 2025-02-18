@@ -2,6 +2,10 @@ import 'package:doublevpartners/data/repositories/auth/auth_repository_dev.dart'
 import 'package:doublevpartners/data/repositories/auth/auth_repository_fake.dart';
 import 'package:doublevpartners/data/repositories/auth/auth_repository_impl.dart';
 import 'package:doublevpartners/data/repositories/localization/localization_repository_impl.dart';
+import 'package:doublevpartners/domain/use_cases/maps/get_current_position_use_case.dart';
+import 'package:doublevpartners/domain/use_cases/maps/get_location_by_id_use_case.dart';
+import 'package:doublevpartners/domain/use_cases/maps/get_location_by_key_word_use_case.dart';
+import 'package:doublevpartners/domain/use_cases/maps/get_location_by_lat_lng_use_case.dart';
 import 'package:doublevpartners/domain/use_cases/maps/save_location_use_case.dart';
 import 'package:doublevpartners/presentation/ui/widgets/maps_repository_impl.dart';
 import 'package:doublevpartners/data/repositories/theme/theme_repository_impl.dart';
@@ -134,6 +138,20 @@ class DependencyInjection {
         userState: getIt.get<UserState>(),
       ),
     );
+
+    getIt.registerSingleton<GetCurrentPositionUseCase>(
+      GetCurrentPositionUseCase(mapsRepository: getIt.get<MapsRepository>()),
+    );
+    getIt.registerSingleton<GetLocationByLatLngUseCase>(
+      GetLocationByLatLngUseCase(mapsRepository: getIt.get<MapsRepository>()),
+    );
+    getIt.registerSingleton<GetLocationByKeyWordUseCase>(
+      GetLocationByKeyWordUseCase(mapsRepository: getIt.get<MapsRepository>()),
+    );
+    getIt.registerSingleton<GetLocationByIdUseCase>(
+      GetLocationByIdUseCase(mapsRepository: getIt.get<MapsRepository>()),
+    );
+
     //#endregion
     //#endregion
   }

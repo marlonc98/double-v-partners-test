@@ -98,35 +98,35 @@ class MapLocationsSearchPageViewModel
       ),
     );
 
-    // if (viewResponse != null) {
-    //   Either<ExceptionEntity, void> result = await getIt
-    //       .get<SaveLocationUseCase>()
-    //       .call(location: viewResponse);
+    if (viewResponse != null) {
+      Either<ExceptionEntity, void> result = await getIt
+          .get<SaveLocationUseCase>()
+          .call(location: viewResponse);
 
-    //   if (result.isLeft) {
-    //     if (mounted) {
-    //       ShowModal.showSnackBar(
-    //         // ignore: use_build_context_synchronously
-    //         context: context,
-    //         text: result.left.code,
-    //         error: true,
-    //       );
-    //     }
-    //   } else {
-    //     if (mounted) {
-    //       //reset search
-    //       query = '';
-    //       page = 1;
-    //       pagingController.refresh();
+      if (result.isLeft) {
+        if (mounted) {
+          ShowModal.showSnackBar(
+            // ignore: use_build_context_synchronously
+            context: context,
+            text: result.left.code,
+            error: true,
+          );
+        }
+      } else {
+        if (mounted) {
+          //reset search
+          query = '';
+          page = 1;
+          pagingController.refresh();
 
-    //       ShowModal.showSnackBar(
-    //         // ignore: use_build_context_synchronously
-    //         context: context,
-    //         text: "Location saved",
-    //         error: false,
-    //       );
-    //     }
-    //   }
-    // }
+          ShowModal.showSnackBar(
+            // ignore: use_build_context_synchronously
+            context: context,
+            text: "Location saved",
+            error: false,
+          );
+        }
+      }
+    }
   }
 }
